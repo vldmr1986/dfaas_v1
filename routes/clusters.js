@@ -49,7 +49,6 @@ router.delete("/delete", async(req, res)=>{
   }
   const values = [customerid, clusterid];
    const result = await db.pool.query("DELETE FROM clusters WHERE customerid=? and clusterid=?;", values);
-
    if (result) {
      res.send({
        status: "OK",
