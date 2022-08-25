@@ -52,7 +52,10 @@ router.delete("/delete", async(req, res)=>{
 
    if (result) {
      res.send({
-       status: "OK"
+       status: "OK",
+       ui: "https://abc.cde.com/glc*",
+       nfs: "abc.cde.com:/dfaas/*",
+       s3: "abc.cde.com",
      });
    }
 
