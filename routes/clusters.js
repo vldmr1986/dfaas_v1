@@ -18,16 +18,15 @@ router.get('/', async(req, res) => {
 });
 
 router.post('/create', async(req, res) => {
-  const {zone = "", targetcloud="", clustername, customerid, endpoints="", clustersize=0, vpcid="", subnetid="", accesskey= "", secretkey = ""} = req.body;
+  const {zone = "", targetcloud="", clustername, customerid, endpoints="", clustersize=0, vpcid="", subnetid=""} = req.body;
   if (!customerid || !clustername) {
     res.send({
       status: "ERROR"
     });
   }
   try {
-    const values = [Number(customerid), clustername, endpoints, Number(clustersize), vpcid, subnetid, accesskey, secretkey, zone, targetcloud];
-    const result = await db.pool.query("INSERT INTO clusters(customerid, clustername, endpoints, clustersize, vpcid, subnetid, accesskey, secretkey, zone, targetcloud) values (?,?,?,?,?,?,?,?,?,?)", values);
-    console.log("11111112 res", result);
+    const values = [Number(customerid), clustername, endpoints, Number(clustersize), vpcid, subnetid, zone, targetcloud];
+    const result = await db.pool.query("INSERT INTO clusters(customerid, clustername, endpoints, clustersize, vpcid, subnetid, zone, targetcloud) values (?,?,?,?,?,?,?,?)", values);
     const dbResult = result && result[0];
     const responseToUser = dbResult || {status: "OK"}
 

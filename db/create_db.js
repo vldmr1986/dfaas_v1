@@ -4,7 +4,7 @@ const {NEW_DB_NAME, NEW_DB_AUTH_TABLE_NAME, NEW_DB_CLUSTERS_TABLE_NAME, DB_USERN
 
 const createDbQuery = `CREATE DATABASE ${NEW_DB_NAME};`;
 const createAuthTableQuery = `CREATE TABLE ${NEW_DB_AUTH_TABLE_NAME} (id int UNSIGNED AUTO_INCREMENT,  customerid int, customername varchar(20), username varchar(20), password varchar(20), PRIMARY KEY(id));`;
-const createClustersTableQuery = `CREATE TABLE ${NEW_DB_CLUSTERS_TABLE_NAME} (clusterid int UNSIGNED AUTO_INCREMENT, customerid int UNSIGNED, clustername varchar(20), endpoints varchar(50), clustersize int, vpcid varchar(20), subnetid varchar(20), accesskey varchar(128), secretkey varchar(256), zone varchar(20), targetcloud varchar(20), PRIMARY KEY(clusterid));`;
+const createClustersTableQuery = `CREATE TABLE ${NEW_DB_CLUSTERS_TABLE_NAME} (clusterid int UNSIGNED AUTO_INCREMENT, customerid int UNSIGNED, clustername varchar(20), endpoints varchar(50), clustersize int, vpcid varchar(20), subnetid varchar(20), zone varchar(20), targetcloud varchar(20), PRIMARY KEY(clusterid));`;
 
 const db_pipe_creation = async ()=>{
     const  create_db_connection = await mysql.createConnection({
